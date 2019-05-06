@@ -14,8 +14,14 @@ class CreateVetsTable extends Migration
     public function up()
     {
         Schema::create('vets', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->integer('id')->unsigned();
+            $table->string('specialty_vet',128);
+            $table->integer('votes_vet');
+            $table->double('ranking_vet');
             $table->timestamps();
+
+
+            $table->foreign('id')->references('id')->on('people')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -13,8 +13,20 @@ class CreateAnimalsTable extends Migration
      */
     public function up()
     {
+        /*
+         *      name
+                weight
+                age
+                state
+                sex
+                Photo
+         * */
         Schema::create('animals', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->string('name_ani',200);
+            $table->double('weight_ani');
+            $table->string('sex_ani',50);
+            $table->string('urlphoto_ani',220);
             $table->timestamps();
         });
     }
