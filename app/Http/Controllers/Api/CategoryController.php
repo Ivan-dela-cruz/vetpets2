@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categorys = Category::orderBy('id', 'DESC')->paginate(5);
+        return view('admin.category.index', compact('categorys'));
     }
 
     /**

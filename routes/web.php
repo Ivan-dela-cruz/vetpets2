@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('administrador', function () {
+    return view('admin.inicio.index');
+});
+Route::get('categoria', 'Api\CategoryController@index')->name('categoria');
