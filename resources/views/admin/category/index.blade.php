@@ -1,7 +1,7 @@
 @extends('admin.base.base')
 
 @section('titulo')
-    Categoría
+    Categoría de servicios
 @endsection
 @section('scripts')
     <script src="{{asset('admin/plugins/ajax/category.js')}}" type="text/javascript"></script>
