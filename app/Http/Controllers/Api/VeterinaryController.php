@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Veterinary;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class VeterinaryController extends Controller
      */
     public function index()
     {
-        //
+        $veterinarys = Veterinary::orderBy('id', 'DESC')->paginate(5);
+        return view('admin.veterinary.index', compact('veterinarys'));
     }
 
     /**

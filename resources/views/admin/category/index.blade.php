@@ -1,7 +1,7 @@
 @extends('admin.base.base')
 
 @section('titulo')
-    Categoría de servicios
+    Categoría
 @endsection
 @section('scripts')
     <script src="{{asset('admin/plugins/ajax/category.js')}}" type="text/javascript"></script>
@@ -16,12 +16,12 @@
 
 
 @section('mainEncabezado')
-    Categorias para noticias
+    Categorias Lista
 @endsection
 @section('niveles')
     <li class="breadcrumb-item"><a class="text-dark" href="#">Principal</a></li>
-    <li class="breadcrumb-item"><a class="text-dark" href="#">Noticias</a></li>
-    <li class="breadcrumb-item"><a class="" href="#">Categorias</a></li>
+    <li class="breadcrumb-item"><a class="text-dark" href="#">Categorias</a></li>
+    <li class="breadcrumb-item"><a class="" href="#">Archivos</a></li>
 @endsection
 @section('content')
     <section class="content">
@@ -54,7 +54,7 @@
                                     <thead class="text-black-50 text-xl-center">
                                     <th width="10px">N°</th>
                                     <th>Nombre</th>
-                                    <th>Contenido</th>
+                                    <th>Descripcion</th>
                                     <th>Fecha creación</th>
                                     <th>Fecha actualización</th>
                                     <th colspan="3">Acciones</th>
@@ -69,27 +69,27 @@
 
                                             <td>{{$category->id}}</td>
                                             <td>{{$category->name}}</td>
-                                            <td>{{$category->body}}</td>
+                                            <td>{{$category->description}}</td>
                                             <td>{{$category->created_at}}</td>
                                             <td>{{$category->updated_at}}</td>
                                             <td width="10px">
                                                 <a href="#" class="show-modal-cat btn btn-info btn-sm"
                                                    data-id-cat="{{$category->id}}" data-name-cat="{{$category->name}}"
-                                                   data-body-cat="{{$category->body}}">
+                                                   data-body-cat="{{$category->description}}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </td>
                                             <td width="10px">
                                                 <a href="#" class="edit-modal-cat btn btn-warning btn-sm"
                                                    data-id-cat="{{$category->id}}"
-                                                   data-name-cat="{{$category->name}}" data-body-cat="{{$category->body}}">
+                                                   data-name-cat="{{$category->name}}" data-body-cat="{{$category->description}}">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
                                             </td>
                                             <td width="10px">
                                                 <a href="#" class="delete-modal-cat btn btn-danger btn-sm"
                                                    data-id-cat="{{$category->id}}"
-                                                   data-name-cat="{{$category->name}}" data-body-cat="{{$category->body}}">
+                                                   data-name-cat="{{$category->name}}" data-body-cat="{{$category->description}}">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>

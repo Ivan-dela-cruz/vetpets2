@@ -18,6 +18,18 @@ class RoleController extends Controller
         $roles = Role::all();
 
         return $roles;
+        //$roles = Role::orderBy('id', 'DESC')->paginate(5);
+        //return view('admin.role.index', compact('roles'));
+    }
+
+    public function listarroles()
+    {
+        //$roles = Role::all();
+        $roles = Role::orderBy('id', 'DESC')->paginate(5);
+
+        return view('admin.role.index',compact('roles'));
+        //$roles = Role::orderBy('id', 'DESC')->paginate(5);
+        //return view('admin.role.index', compact('roles'));
     }
 
     /**

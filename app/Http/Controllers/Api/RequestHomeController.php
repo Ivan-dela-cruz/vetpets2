@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\RequestHome;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class RequestHomeController extends Controller
      */
     public function index()
     {
-        //
+        $requesthomes = RequestHome::orderBy('id', 'DESC')->paginate(5);
+        return view('admin.requesthome.index', compact('requesthomes'));
     }
 
     /**
