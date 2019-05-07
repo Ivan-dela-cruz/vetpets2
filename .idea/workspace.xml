@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3644846e-4b30-49d7-8671-4eff9e84426a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_05_211627_create_clients_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_05_211627_create_clients_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_05_211706_create_vets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_05_211706_create_vets_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_05_211956_create_veterinaries_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_05_211956_create_veterinaries_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_05_212013_create_animals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_05_212013_create_animals_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_05_212030_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_05_212030_create_categories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_05_212407_create_services_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_05_212407_create_services_table.php" afterDir="false" />
-    </list>
+    <list default="true" id="3644846e-4b30-49d7-8671-4eff9e84426a" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +15,7 @@
     <session id="-1266034980">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.opened" value="2" />
@@ -309,16 +302,15 @@
       <option name="presentableId" value="Default" />
       <updated>1557088219525</updated>
       <workItem from="1557088222396" duration="9847000" />
-      <workItem from="1557120448009" duration="4815000" />
+      <workItem from="1557120448009" duration="5414000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14662000" />
+    <option name="totallyTimeSpent" value="15261000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.35436893" />
