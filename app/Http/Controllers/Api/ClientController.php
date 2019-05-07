@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Client::orderBy('id', 'DESC')->paginate(5);
+        return view('admin.client.index', compact('clients'));
     }
 
     /**

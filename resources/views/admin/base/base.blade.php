@@ -97,7 +97,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link @yield('admiArchivos')">
+                                <a href="{{route('persona')}}"class="nav-link @yield('admiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>
@@ -121,7 +121,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link @yield('admiArchivos')">
+                                <a href="{{route('usuario')}}" class="nav-link @yield('admiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>
@@ -133,7 +133,7 @@
                         <a href="#" class="nav-link @yield('admiveterinario')">
                             <i class="nav-icon fa fa fa-user-md text-info"></i>
                             <p>
-                                Veterinaria
+                                Veterinario
                                 <i class="fa fa-angle-left right"></i>
                             </p>
                         </a>
@@ -145,7 +145,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link @yield('admiArchivos')">
+                                <a href="{{route('veterinario')}}" class="nav-link @yield('admiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>
@@ -169,7 +169,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link @yield('admiArchivos')">
+                                <a href="{{route('role')}}" class="nav-link @yield('admiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>
@@ -193,7 +193,32 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link @yield('admiArchivos')">
+                                <a href="{{route('cita')}}" class="nav-link @yield('admiArchivos')">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Archivos</p>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link @yield('admiCita')">
+                            <i class="nav-icon fa fa-address-book-o text-info"></i>
+                            <p>
+                                Clientes
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="" class="nav-link @yield('adminNuevo')">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Nuevo</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('cliente')}}" class="nav-link @yield('admiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>
@@ -218,7 +243,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link @yield('AdmiArchivos')">
+                                <a href="{{route('solicitud')}}" class="nav-link @yield('AdmiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>
@@ -241,7 +266,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link @yield('AdmiArchivos')">
+                                <a  href="{{route('servicio')}}" class="nav-link @yield('AdmiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>
@@ -265,7 +290,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link @yield('admiArchivos')">
+                                <a href="{{route('veterinaria')}}" class="nav-link @yield('admiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>
@@ -290,7 +315,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link @yield('admiArchivos')">
+                                <a href="{{route('reporte')}}" class="nav-link @yield('admiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>
@@ -340,7 +365,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link @yield('admiArchivos')">
+                                <a href="{{route('animal')}}" class="nav-link @yield('admiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>
@@ -365,7 +390,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link @yield('admiArchivos')">
+                                <a href="{{route('enfermedad')}}" class="nav-link @yield('admiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>

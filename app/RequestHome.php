@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class RequestHome extends Model
 {
-    //
+    protected $fillable=[
+
+        
+
+    ];
 }

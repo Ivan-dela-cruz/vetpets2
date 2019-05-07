@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Person;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class PersonController extends Controller
      */
     public function index()
     {
-        //
+        $persons = Person::orderBy('id', 'DESC')->paginate(5);
+        return view('admin.person.index', compact('persons'));
     }
 
     /**

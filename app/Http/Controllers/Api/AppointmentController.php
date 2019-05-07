@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Appointment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        $appointments = Appointment::orderBy('id', 'DESC')->paginate(5);
+        return view('admin.appointment.index', compact('appointments'));
     }
 
     /**
