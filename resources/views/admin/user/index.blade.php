@@ -1,37 +1,37 @@
 @extends('admin.base.base')
-
 @section('titulo')
-    Usuario
-@endsection
-@section('scripts')
-    <script src="{{asset('admin/plugins/ajax/animal.js')}}" type="text/javascript"></script>
+    Noticias
 @endsection
 @section('noti')
     active
 @endsection
-
-@section('notiCategoria')
+@section('scripts')
+    <script src="{{asset('admin/plugins/ajax/post.js')}}" type="text/javascript"></script>
+@endsection
+@section('notiPublicadas')
     active
 @endsection
-
-
+@section('username')
+    Auth
+@endsection
 @section('mainEncabezado')
-    Usuarios Lista
+    Noticias publicadas
 @endsection
 @section('niveles')
     <li class="breadcrumb-item"><a class="text-dark" href="#">Principal</a></li>
-    <li class="breadcrumb-item"><a class="text-dark" href="#">Persona</a></li>
-    <li class="breadcrumb-item"><a class="" href="#">Archivos</a></li>
+    <li class="breadcrumb-item"><a class="text-dark" href="#">Noticias</a></li>
+    <li class="breadcrumb-item"><a class="" href="#">Publicadas</a></li>
 @endsection
+@guest
+@else
 @section('content')
     <section class="content">
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="card-dark">
                         <div class="card-header">
-                            <h3 class="card-title">Lista</h3>
+                            <h3 class="card-title">Publicaciones</h3>
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 250px;">
                                     <input type="text" name="table_search" class="form-control float-right"
@@ -39,8 +39,8 @@
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
                                         </button>
-                                        <a href="#"
-                                           class="create-modalcat btn btn-info btn-sm mx-2">
+                                        <a href="{{ route('posts.create') }}"
+                                           class="btn btn-info btn-sm mx-2">
                                             <i class="fa fa-plus nav-icon"></i>
                                             Añadir
                                         </a>
@@ -50,131 +50,60 @@
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
-                                <table id="table" class="table m-0 table-bordered table-responsive">
-                                    <thead class="text-black-50 text-xl-center">
-                                    <th width="10px">N°</th>
-                                    <th>Nombre usuario</th>
-                                    <th>password</th>
-                                    <th>Codicion usuario</th>
-                                    <th colspan="3">Acciones</th>
-
-
-                                    </thead>
+                                <table id="table" class="table m-0 table-bordered">
                                     <tbody>
                                     {{ csrf_field() }}
-                                    <?php  $no = 1; ?>
-                                    @foreach( $users as $user )
-                                        <tr class="cat{{$user->id}}">
+                                    <div class="col-lg-12">
+                                        @foreach($posts as $post)
+                                            <div class="cat{{$post->id}} card card-lift--hover shadow border-0 mt-3">
+                                                <div class="row row-grid">
+                                                    <div class="col-lg-3 mt-3 mx-2 mb-2 py-2">
+                                                        @if($post->file)
+                                                            <img  width="250px" height="150px" src="{{$post->file}}" alt="Raised image"
+                                                                 class="">
+                                                            <mark class="small">Fecha creación</mark>
+                                                            <small class="small">{{$post->updated_at}}</small>
+                                                            <mark class="small">última edición</mark>
+                                                            <small class="small">{{$post->created_at}}</small>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-lg-8 mt-3 mx-2 mb-2 py-2">
+                                                        <h6 class="text-primary text-uppercase">{{$post->name}}</h6>
+                                                        <p class="small">{{$post->excerpt}}</p>
+                                                        <div class="row">
+                                                            <div class="input-group input-group-sm">
+                                                                <a href="{{ route('posts.show', $post->id) }}"
+                                                                   class=" btn btn-info btn-sm mx-1">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </a>
+                                                                <a href="{{ route('posts.edit', $post->id) }}"
+                                                                   class=" btn btn-warning btn-sm mx-1">
+                                                                    <i class="fa fa-pencil"></i>
+                                                                </a>
+                                                                <a href="#" class="delete-modal-cat btn btn-danger btn-sm"
+                                                                   data-id-cat="{{$post->id}}"
+                                                                   data-name-cat="{{$post->name}}" data-body-cat="{{$post->body}}">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
 
-                                            <td>{{$user->id}}</td>
-                                            <td>{{$user->name_user}}</td>
-                                            <td>{{$user->password_user}}</td>
-                                            <td>{{$user->condition_user}}</td>
-
-                                            <td width="10px">
-                                                <a href="#" class="show-modal-cat btn btn-info btn-sm"
-                                                   data-id-cat="{{$user->id}}" data-name-cat="{{$user->name_user}}"
-                                                   data-body-cat="{{$user->condition_user}}">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-                                            </td>
-                                            <td width="10px">
-                                                <a href="#" class="edit-modal-cat btn btn-warning btn-sm"
-                                                   data-id-cat="{{$user->id}}"
-                                                   data-name-cat="{{$user->name_user}}" data-body-cat="{{$user->condition_user}}">
-                                                    <i class="fa fa-pencil"></i>
-                                                </a>
-                                            </td>
-                                            <td width="10px">
-                                                <a href="#" class="delete-modal-cat btn btn-danger btn-sm"
-                                                   data-id-cat="{{$user->id}}"
-                                                   data-name-cat="{{$user->name_user}}" data-body-cat="{{$user->condition_user}}">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
-                                            </td>
-
-                                        </tr>
-                                    @endforeach
-
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <br>
+                                        {{$posts->render()}}
+                                    </div>
                                     </tbody>
                                 </table>
-                                {{$users->render()}}
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    {{-- Modal Form Create Post --}}
-    <div id="create-cat" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title-cat"></h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal-cat" role="form">
-                        <div class="form-group row add">
-                            <label class="control-label col-sm-2" for="namecat">Nombre :</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="namecat" name="namecat"
-                                       placeholder="nombre etiqueta" required>
-
-                                <p class="alert-error text-center alert-danger hidden"></p>
-                            </div>
-                        </div>
-                        <div class="form-group row add">
-                            <label class="control-label col-sm-2" for="bodycat">Contenido :</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="bodycat" name="bodycat"
-                                       placeholder="etiqueta-url" required>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-warning" type="submit" id="add-cat">
-                        <span class="fa fa-plus"></span>añadir
-                    </button>
-                    <button class="btn btn-warning" type="button" data-dismiss="modal">
-                        <span class="fa fa-backward"></span>cancelar
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- Modal Form Show POST --}}
-    <div id="show-cat" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title-cat"></h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                </div>
-                <div class="modal-body">
-                    <div class="form-group border">
-                        <label for="">id:</label>
-
-                        <span class="text-info"><b id="idcat"/></span>
-                    </div>
-                    <div class="form-group border">
-                        <label for="">Nombre :</label>
-                        <span class="text-info"><b id="namecatshow"/></span>
-                    </div>
-                    <div class="form-group border">
-                        <label for="">Contenido :</label>
-                        <span class="text-info"><b id="bodycatshow"/></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     {{-- Modal Form Edit and Delete Post --}}
     <div id="myModal-cat" class="modal fade" role="dialog">
@@ -232,3 +161,4 @@
         </div>
     </div>
 @endsection
+@endguest
