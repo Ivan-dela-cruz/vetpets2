@@ -97,7 +97,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('persona')}}"class="nav-link @yield('admiArchivos')">
+                                <a href="{{route('persona.index')}}"class="nav-link @yield('admiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>
@@ -340,7 +340,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('categoria')}}" class="nav-link @yield('admiArchivos')">
+                                <a href="{{route('categoria.index')}}" class="nav-link @yield('admiArchivos')">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Archivos</p>
                                 </a>

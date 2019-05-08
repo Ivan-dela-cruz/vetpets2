@@ -15,8 +15,8 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $persons = Person::orderBy('id', 'DESC')->paginate(5);
-        return view('admin.person.index', compact('persons'));
+        $people = Person::orderBy('id', 'DESC')->paginate(5);
+        return view('admin.person.index', compact('people'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PersonController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.person.create');
     }
 
     /**
@@ -37,7 +37,32 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate{[
+            'name_people' => 'require',
+            'ci_people' => 'require',
+            'mobile_people'=>'required',
+            'province_people'=>'required',
+            'canton_people'=>'required',
+            'email'=>'required'
+        ]};
+        $person = new Person();
+        $person->name_people = $request->name_people;
+        $person->surname_people = $request->surname_people;
+        $person->ci_people = $request->ci_people;
+        $person->mobile_people = $request->mobile_people;
+        $person->email_people = $request->email_people;
+        $person->province_people = $request->province_people;
+        $person->canton_people = $request->canton_people;
+        $person->address_people = $request->address_people;
+        $person->status_people = "activo";
+
+        $person->save();
+
+
+
+
+
+        return redirect()->route('persona.index')->with('info', 'Entrada creada con éxito');
     }
 
     /**

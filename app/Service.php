@@ -11,4 +11,9 @@ class Service extends Model
         'id_cat','name_ser', 'description_ser','price', 'urlphoto','status'
 
     ];
+
+    public function category(){
+
+        return $this->belongsTo('App\Category','id_cat');
+    }
 }

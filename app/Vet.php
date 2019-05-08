@@ -11,4 +11,9 @@ class Vet extends Model
         'speciality_vet','votes_vet','ranking_vet'
 
     ];
+
+
+    public function people(){
+        return $this->belongsTo('App\Person','id');
+    }
 }

@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('administrador', function () {
     return view('admin.inicio.index');
 });
-Route::get('categoria', 'Api\CategoryController@index')->name('categoria');
+Route::resource('categoria', 'Api\CategoryController');
 
 
 Route::get('animal', 'Api\AnimalController@index')->name('animal');
@@ -30,7 +30,7 @@ Route::get('cliente', 'Api\ClientController@index')->name('cliente');
 
 Route::get('enfermedad', 'Api\DiseaseController@index')->name('enfermedad');
 
-Route::get('persona', 'Api\PersonController@index')->name('persona');
+Route::resource('persona', 'Api\PersonController');
 
 Route::get('reporte', 'Api\ReportController@index')->name('reporte');
 

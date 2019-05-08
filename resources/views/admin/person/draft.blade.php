@@ -1,6 +1,6 @@
 @extends('admin.base.base')
 @section('titulo')
-    Noticias
+    Noticias en borrador
 @endsection
 @section('noti')
     active
@@ -8,30 +8,30 @@
 @section('scripts')
     <script src="{{asset('admin/plugins/ajax/post.js')}}" type="text/javascript"></script>
 @endsection
-@section('notiPublicadas')
+@section('notiBorrador')
     active
 @endsection
 @section('username')
     Auth
 @endsection
 @section('mainEncabezado')
-    Noticias publicadas
+    Noticias no publicadas
 @endsection
 @section('niveles')
     <li class="breadcrumb-item"><a class="text-dark" href="#">Principal</a></li>
     <li class="breadcrumb-item"><a class="text-dark" href="#">Noticias</a></li>
     <li class="breadcrumb-item"><a class="" href="#">Publicadas</a></li>
 @endsection
-
+@guest
+@else
 @section('content')
     <section class="content">
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="card-dark">
                         <div class="card-header">
-                            <h3 class="card-title">Lista</h3>
+                            <h3 class="card-title">Lista borrador</h3>
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 250px;">
                                     <input type="text" name="table_search" class="form-control float-right"
@@ -39,8 +39,8 @@
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
                                         </button>
-                                        <a href="{{route('persona.create')}}"
-                                           class="create-modalcat btn btn-info btn-sm mx-2">
+                                        <a href="{{ route('posts.create') }}"
+                                           class="btn btn-info btn-sm mx-2">
                                             <i class="fa fa-plus nav-icon"></i>
                                             Añadir
                                         </a>
@@ -50,65 +50,55 @@
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
-                                <table id="table" class="table m-0 table-bordered table-responsive">
-                                    <thead class="text-black-50 text-xl-center">
-                                    <th width="10px">N</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Cedula</th>
-                                    <th>Celular</th>
-                                    <th>Correo</th>
-                                    <th>Provincia</th>
-                                    <th>Canton</th>
-                                    <th>Direccion</th>
-                                    <th>Estado</th>
-                                    <th colspan="2">Acciones</th>
-
-
-                                    </thead>
+                                <table id="table" class="table m-0 table-bordered">
                                     <tbody>
                                     {{ csrf_field() }}
-                                    <?php  $no = 1; ?>
-                                    @foreach( $people as $person )
-                                        <tr class="cat{{$person->id}}">
+                                    <div class="col-lg-12">
+                                        @foreach($posts as $post)
+                                            <div class="cat{{$post->id}} card card-lift--hover shadow border-0 mt-3">
+                                                <div class="row row-grid">
+                                                    <div class="col-lg-3 mt-3 mx-2 mb-2 py-2">
+                                                        @if($post->file)
+                                                            <img src="{{$post->file}}" alt="Raised image"
+                                                                 class="img-fluid rounded shadow-lg">
+                                                            <mark class="small">Fecha creación</mark>
+                                                            <small class="small">{{$post->updated_at}}</small>
+                                                            <mark class="small">última edición</mark>
+                                                            <small class="small">{{$post->created_at}}</small>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-lg-8 mt-3 mx-2 mb-2 py-2">
+                                                        <h6 class="text-primary text-uppercase">{{$post->name}}</h6>
+                                                        <p class="small">{{$post->excerpt}}</p>
+                                                        <div class="row">
+                                                            <div class="input-group input-group-sm">
+                                                                <a href="{{ route('posts.show', $post->id) }}"
+                                                                   class=" btn btn-info btn-sm mx-1">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </a>
+                                                                <a href="{{ route('posts.edit', $post->id) }}"
+                                                                   class=" btn btn-warning btn-sm mx-1">
+                                                                    <i class="fa fa-pencil"></i>
+                                                                </a>
+                                                                <a href="#" class="delete-modal-cat btn btn-danger btn-sm"
+                                                                   data-id-cat="{{$post->id}}"
+                                                                   data-name-cat="{{$post->name}}" data-body-cat="{{$post->body}}">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
 
-                                            <td>{{$person->id}}</td>
-                                            <td>{{$person->name_people}}</td>
-                                            <td>{{$person->surname_people}}</td>
-                                            <td>{{$person->ci_people}}</td>
-                                            <td>{{$person->mobile_people}}</td>
-                                            <td>{{$person->email_people}}</td>
-                                            <td>{{$person->province_people}}</td>
-                                            <td>{{$person->canton_people}}</td>
-                                            <td>{{$person->address_people}}</td>
-                                            <td>{{$person->status_people}}</td>
-
-                                            <td width="10px">
-                                                <a href="#" class="edit-modal-cat btn btn-warning btn-sm"
-                                                   data-id-cat="{{$person->id}}"
-                                                   data-name-cat="{{$person->name_people}}"
-                                                   data-body-cat="{{$person->ci_people}}">
-                                                    <i class="fa fa-pencil"></i>
-                                                </a>
-                                            </td>
-                                            <td width="10px">
-                                                <a href="#" class="delete-modal-cat btn btn-success btn-sm"
-                                                   data-id-cat="{{$person->id}}"
-                                                   data-name-cat="{{$person->name_people}}"
-                                                   data-body-cat="{{$person->_people}}">
-                                                    <i class="fa fa-check-circle"></i>
-                                                </a>
-                                            </td>
-
-                                        </tr>
-                                    @endforeach
-
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <br>
+                                        {{$posts->render()}}
+                                    </div>
                                     </tbody>
                                 </table>
-                                {{$people->render()}}
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -171,3 +161,4 @@
         </div>
     </div>
 @endsection
+@endguest
